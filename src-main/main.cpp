@@ -29,7 +29,7 @@ int main( int argc, char *argv[] )
 					<< ""										<< std::endl
 					<< "MAP:"									<< std::endl;
 		const auto m = db.get_all_fields( argv[idx] );
-		for (const auto iter : m)
+		for (const auto& iter : m)
 		{
 			const std::string key = iter.first;
 			const std::string val = iter.second;
