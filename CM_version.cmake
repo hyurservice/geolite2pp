@@ -1,5 +1,5 @@
-# GeoLite2++ (C) 2016 Stephane Charette <stephanecharette@gmail.com>
-# $Id: CM_version.cmake 1991 2016-10-16 16:50:19Z stephane $
+# GeoLite2++ (C) 2016-2018 Stephane Charette <stephanecharette@gmail.com>
+# $Id: CM_version.cmake 2549 2018-06-08 18:48:31Z stephane $
 
 
 EXECUTE_PROCESS (

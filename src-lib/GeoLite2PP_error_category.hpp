@@ -1,5 +1,5 @@
-/* GeoLite2++ (C) 2016 Stephane Charette <stephanecharette@gmail.com>
- * $Id: GeoLite2PP_error_category.hpp 1990 2016-10-16 10:03:16Z stephane $
+/* GeoLite2++ (C) 2016-2018 Stephane Charette <stephanecharette@gmail.com>
+ * $Id: GeoLite2PP_error_category.hpp 2549 2018-06-08 18:48:31Z stephane $
  */
 
 #pragma once

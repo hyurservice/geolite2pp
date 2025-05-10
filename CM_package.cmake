@@ -1,8 +1,8 @@
-# GeoLite2++ (C) 2016 Stephane Charette <stephanecharette@gmail.com>
-# $Id: CM_package.cmake 1999 2016-10-17 16:49:34Z stephane $
+# GeoLite2++ (C) 2016-2018 Stephane Charette <stephanecharette@gmail.com>
+# $Id: CM_package.cmake 2549 2018-06-08 18:48:31Z stephane $
 
 
-SET ( CPACK_PACKAGE_VENDOR				"Stéphane Charette"				)
+SET ( CPACK_PACKAGE_VENDOR				"Stephane Charette"				)
 SET ( CPACK_PACKAGE_CONTACT				"stephanecharette@gmail.com"	)
 SET ( CPACK_PACKAGE_DESCRIPTION_SUMMARY	"GeoLite2 C++ Interface"		)
 SET ( CPACK_PACKAGE_DESCRIPTION			"GeoLite2 C++ Interface"		)

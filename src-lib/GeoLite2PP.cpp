@@ -1,5 +1,5 @@
-/* GeoLite2++ (C) 2016 Stephane Charette <stephanecharette@gmail.com>
- * $Id: GeoLite2PP.cpp 1996 2016-10-17 16:16:21Z stephane $
+/* GeoLite2++ (C) 2016-2018 Stephane Charette <stephanecharette@gmail.com>
+ * $Id: GeoLite2PP.cpp 2549 2018-06-08 18:48:31Z stephane $
  */
 
 

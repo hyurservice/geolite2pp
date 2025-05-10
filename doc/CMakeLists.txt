@@ -1,5 +1,5 @@
-# GeoLite2++ (C) 2016 Stephane Charette <stephanecharette@gmail.com>
-# $Id: CMakeLists.txt 1997 2016-10-17 16:22:42Z stephane $
+# GeoLite2++ (C) 2016-2018 Stephane Charette <stephanecharette@gmail.com>
+# $Id: CMakeLists.txt 2549 2018-06-08 18:48:31Z stephane $
 
 FIND_PACKAGE ( Doxygen QUIET )
 

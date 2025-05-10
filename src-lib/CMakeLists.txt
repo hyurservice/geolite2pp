@@ -1,5 +1,5 @@
-# GeoLite2++ (C) 2016 Stephane Charette <stephanecharette@gmail.com>
-# $Id: CMakeLists.txt 1990 2016-10-16 10:03:16Z stephane $
+# GeoLite2++ (C) 2016-2018 Stephane Charette <stephanecharette@gmail.com>
+# $Id: CMakeLists.txt 2549 2018-06-08 18:48:31Z stephane $
 
 CONFIGURE_FILE ( ${CMAKE_CURRENT_SOURCE_DIR}/GeoLite2PP_version.hpp.in ${CMAKE_CURRENT_SOURCE_DIR}/GeoLite2PP_version.hpp )
 

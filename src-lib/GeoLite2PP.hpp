@@ -1,5 +1,5 @@
-/* GeoLite2++ (C) 2016 Stephane Charette <stephanecharette@gmail.com>
- * $Id: GeoLite2PP.hpp 1996 2016-10-17 16:16:21Z stephane $
+/* GeoLite2++ (C) 2016-2018 Stephane Charette <stephanecharette@gmail.com>
+ * $Id: GeoLite2PP.hpp 2549 2018-06-08 18:48:31Z stephane $
  */
 
 #pragma once
@@ -41,7 +41,8 @@ namespace GeoLite2PP
 			/** Constructor.
 			* @param [in] database_filename The database filename is the @p .mmdb file typically downloaded from
 			* MaxMind.  Normally, this file is called @p GeoLite2-City.mmdb and may be downloaded for free from
-			* http://dev.maxmind.com/geoip/geoip2/geolite2/#Downloads.
+			* http://dev.maxmind.com/geoip/geoip2/geolite2/#Downloads.  The name used can be relative to the current
+			* working directory, or an absolute path and filename.
 			*
 			* ~~~~
 			* std::string filename = "/opt/my_project_files/GeoLite2-City.mmdb";
@@ -78,7 +79,7 @@ namespace GeoLite2PP
 			 *
 			 * ~~~~
 			 * GeoLite2PP::DB db;
-			 * std::cout << db.get_liv_version_geolite2pp() << std::endl;
+			 * std::cout << db.get_lib_version_geolite2pp() << std::endl;
 			 * ~~~~
 			 *
 			 * Example output:
@@ -146,7 +147,7 @@ namespace GeoLite2PP
 			 *    "subdivisions" : [ { "iso_code" : "CA", "names" : { "en" : "California" } } ]
 			 * }
 			 * ~~~~
-			 * @note <i>Some of the JSON entries have been removed in this example output.</i>
+			 * @note <i>For clarity, some of the JSON entries have been removed in this example output.</i>
 			 */
 			std::string lookup( const std::string &ip_address );
 
@@ -162,7 +163,7 @@ namespace GeoLite2PP
 			 * GeoLite2PP::MStr m = db.get_all_fields( "65.44.217.6" );
 			 * for ( const auto iter : m )
 			 * {
-			 * 		std::cout << "key=" << iter.first << " -> " << iter.second << std::endl;
+			 * 		std::cout << iter.first << " -> " << iter.second << std::endl;
 			 * }
 			 * ~~~~
 			 *
@@ -193,9 +194,9 @@ namespace GeoLite2PP
 			 *
 			 * ~~~~
 			 * GeoLite2PP::DB db;
-			 * std::string city     = db.get_field( "65.44.217.6", GeoLite2PP::VCStr { "city"    , "names"  , "en" } );
-			 * std::string country  = db.get_field( "65.44.217.6", GeoLite2PP::VCStr { "country" , "names"  , "en" } );
-			 * std::string latitude = db.get_field( "65.44.217.6", GeoLite2PP::VCStr { "location", "latitude"      } );
+			 * std::string city     = db.get_field( "65.44.217.6", "en", GeoLite2PP::VCStr { "city"    , "names"    } );
+			 * std::string country  = db.get_field( "65.44.217.6", "en", GeoLite2PP::VCStr { "country" , "names"    } );
+			 * std::string latitude = db.get_field( "65.44.217.6", "en", GeoLite2PP::VCStr { "location", "latitude" } );
 			 * ~~~~
 			 */
 			std::string get_field( const std::string &ip_address, const std::string &language, const VCStr &v );
@@ -208,17 +209,19 @@ namespace GeoLite2PP
 			 * ~~~~
 			 * GeoLite2PP::DB db;
 			 * MMDB_lookup_result_s result = db.lookup_raw( "65.44.217.6" );
-			 * std::string city     = db.get_field( &result, GeoLite2PP::VCStr { "city"    , "names"  , "en" } );
-			 * std::string country  = db.get_field( &result, GeoLite2PP::VCStr { "country" , "names"  , "en" } );
-			 * std::string latitude = db.get_field( &result, GeoLite2PP::VCStr { "location", "latitude"      } );
+			 * std::string city     = db.get_field( &result, "en", GeoLite2PP::VCStr { "city"    , "names"    } );
+			 * std::string country  = db.get_field( &result, "en", GeoLite2PP::VCStr { "country" , "names"    } );
+			 * std::string latitude = db.get_field( &result, "en", GeoLite2PP::VCStr { "location", "latitude" } );
 			 * ~~~~
 			 */
 			std::string get_field( MMDB_lookup_result_s *lookup, const std::string &language, const VCStr &v );
 
-			/** Process the specified node list and return a JSON-format string.  This @b will de-allocate the
-			 * node list prior to returning.  This is intended mostly for internal purposes.
-			 * @see @ref lookup()
-			 * @see @ref get_metadata()
+			/** Process the specified node list and return a JSON-format string.
+			 *
+			 * @warning This @b will de-allocate the node list prior to returning; do not call
+			 * @p MMDB_free_entry_data_list() on the node.
+			 *
+			 * This call is intended mostly for internal purposes.  @see @ref lookup()  @see @ref get_metadata()
 			 */
 			std::string to_json( MMDB_entry_data_list_s *node );
 
